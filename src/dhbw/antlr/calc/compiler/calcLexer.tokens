@@ -1,0 +1,11 @@
+NUMBER=1
+MUL=2
+DIV=3
+PLUS=4
+MINUS=5
+NEWLINE=6
+WS=7
+'*'=2
+'/'=3
+'+'=4
+'-'=5

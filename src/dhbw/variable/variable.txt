@@ -1,0 +1,6 @@
+$IN
+a=2;
+b=a+5;
+PRINT b;
+$OUT
+7
