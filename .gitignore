@@ -1,8 +1,7 @@
 .gitignore
-.idea
-.settings
 .classpath
 .project
 DHBW-Compilerbau.iml
-bin
-.gitignore___jb_tmp___
+bin/
+.idea/
+.settings/
