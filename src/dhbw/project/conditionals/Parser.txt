@@ -1,0 +1,14 @@
+$IN
+a = 2;
+b = a +5;
+PRINT b;
+$OUT
+7
+$IN
+a = 2 * 7;
+PRINT a;
+a = a + 3;
+PRINT a;
+$OUT
+14
+17

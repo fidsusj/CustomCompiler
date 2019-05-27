@@ -1,10 +1,10 @@
-package dhbw.variable;
+package dhbw.project.conditionals;
 
-public class VariableMain {
+public class ParserMain {
 
 	public static void main(String[] args) throws Exception {
 		System.err.println("BEGIN");
-		VariableTest test = new VariableTest(args[0]);
+		ParserTest test = new ParserTest(args[0]);
 		test.testRun();
 		System.err.println("END");
 	}

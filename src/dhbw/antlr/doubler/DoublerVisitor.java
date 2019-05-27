@@ -10,6 +10,9 @@ public class DoublerVisitor extends doublerBaseVisitor<String>{
 	//Merke: Für jedes Terminal in der Regel gibt es (auch hier) eine Methode im Kontextobjekt
 	//Kein Iterieren über alle Kinder mit Typprüfung notwendig
 	
+	//Statt einen String zurück zu geben, könnte auch ein CSVToken Objekt zurück gegeben werden (hier aber zusätzlicher Overhead)
+	//Siehe Lösung
+	
 	@Override 
 	public String visitStart(doublerParser.StartContext ctx) { 
 		StringBuilder line = new StringBuilder();
@@ -30,7 +33,7 @@ public class DoublerVisitor extends doublerBaseVisitor<String>{
 
 	@Override 
 	public String visitNumber(doublerParser.NumberContext ctx) { 
-		Integer number = Integer.valueOf(ctx.NUMBER().getText());
+		Integer number = Integer.valueOf(ctx.getText());
 		number *= 2;
 		return number.toString();
 	}

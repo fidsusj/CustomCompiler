@@ -1,0 +1,6 @@
+{
+	a = 2;
+	b = a +5;
+	PRINT b + a + 7;
+	CALL fct(5, 2);
+}
