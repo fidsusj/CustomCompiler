@@ -104,10 +104,17 @@ public class StmtReader implements StmtReaderIntf {
 	// do while statement
     // DO { STMTLIST } WHILE (EXPR);
     public void getDoWhileStmt() throws Exception {
+    	InstrBlock doWhileBlock = new InstrBlock();
+    	InstrBlock followBlock = new InstrBlock();
+    	
+	    InstrIntf jumpDo = new Instr.InstrJump(doWhileBlock);
+	    m_compileEnv.addInstr(jumpDo);
+    	m_compileEnv.setCurrentBlock(doWhileBlock);
+    	
 	    m_lexer.advance();
 	    // Prepare (read) loop body
 	    getBlockStmt();
-	
+	    
 	    m_lexer.expect(Token.Type.WHILE);
 	
 	    // Prepare (read) condition
@@ -115,6 +122,10 @@ public class StmtReader implements StmtReaderIntf {
 	    m_exprReader.getExpr();
 	    m_lexer.expect(Token.Type.RPAREN);
 	    m_lexer.expect(Token.Type.SEMICOL);
+	    
+	    InstrIntf jumpCond = new Instr.InstrCondJump(doWhileBlock, followBlock);
+	    m_compileEnv.addInstr(jumpCond);
+	    m_compileEnv.setCurrentBlock(followBlock);
     }
 
 	// for statement

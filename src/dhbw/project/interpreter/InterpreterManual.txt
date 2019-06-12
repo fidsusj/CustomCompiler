@@ -1,19 +1,8 @@
 {
-  a = 2;
-  PRINT a;
-  a = a - 7 - 3;
-  b = a + 15;
-  IF (a > 0-10) {
-    PRINT b;
-  } ELSE {
-    PRINT b + a;
-  }
-  WHILE (a<0) {
-    PRINT a;
-    a = a + 1;
-  }
-  FUNCTION myfct(parA, parB) {
-    PRINT parA;
-    PRINT parB;
-  }
+	a = 0;
+	DO {
+		PRINT a;
+	 	a = a + 1;
+	} WHILE (a < 10);
+	PRINT a + 100;
 }
