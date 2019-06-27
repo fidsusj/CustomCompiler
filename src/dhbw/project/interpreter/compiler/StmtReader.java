@@ -133,11 +133,36 @@ public class StmtReader implements StmtReaderIntf {
 		m_lexer.advance();
 		m_lexer.expect(Token.Type.LPAREN);
 		getStmt();
+		
+    	InstrBlock conditionBlock = new InstrBlock();
+    	InstrBlock incBlock = new InstrBlock();
+    	InstrBlock bodyBlock = new InstrBlock();
+    	InstrBlock followBlock = new InstrBlock();
+    	
+	    InstrIntf jumpCond = new Instr.InstrJump(conditionBlock);
+	    m_compileEnv.addInstr(jumpCond);
+    	m_compileEnv.setCurrentBlock(conditionBlock);
+		
 		m_exprReader.getExpr();
 		m_lexer.expect(Token.Type.SEMICOL);
+		
+		InstrIntf jumpAfterCond = new Instr.InstrCondJump(bodyBlock, followBlock);
+		m_compileEnv.addInstr(jumpAfterCond);
+		m_compileEnv.setCurrentBlock(incBlock);
+
 		getStmt();
 		m_lexer.expect(Token.Type.RPAREN);
+		
+		m_compileEnv.addInstr(jumpCond);
+		m_compileEnv.setCurrentBlock(bodyBlock);
+		
 		getBlockStmt();
+		
+	    InstrIntf jumpInc = new Instr.InstrJump(incBlock);
+	    m_compileEnv.addInstr(jumpInc);
+	    
+	    m_compileEnv.setCurrentBlock(followBlock);
+	    
 	}
 
 	public void getIfStmt() throws Exception {

@@ -5,4 +5,9 @@
 	 	a = a + 1;
 	} WHILE (a < 10);
 	PRINT a + 100;
+	
+	FOR(a = 0; a<10; a = a + 1;) {
+		PRINT a;
+	}	
+
 }

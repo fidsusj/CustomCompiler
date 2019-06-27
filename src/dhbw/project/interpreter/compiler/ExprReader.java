@@ -59,7 +59,7 @@ public class ExprReader extends ExprReaderIntf {
 	public void getProduct() throws Exception {
 		getFactor();
 		Token token = m_lexer.lookAheadToken(); 
-		while (token.m_type == Token.Type.MUL) {
+		while (token.m_type == Token.Type.MUL || token.m_type == Token.Type.DIV) {
 			m_lexer.advance();
 			getFactor();
 			InstrIntf instr = (token.m_type == Token.Type.MUL) ? new Instr.InstrMul() : new Instr.InstrDiv();

@@ -3,9 +3,9 @@ ElseIfStmt ::= "ELSE" "IF" "(" Cond ")" BLOCKSTMT ElseIfStmt |
 			   epsilon
 ElseStmt   ::= "ELSE" BLOCKSTMT | 
 			   epsilon
-Cond       ::= COMPSTMT "&" Cond+  |
-			   COMPSTMT "&&" Cond+ |
-			   COMPSTMT "|" Cond+  |
-			   COMPSTMT "||" Cond+ |
+Cond       ::= COMPSTMT "&" Cond   |
+			   COMPSTMT "&&" Cond  |
+			   COMPSTMT "|" Cond   |
+			   COMPSTMT "||" Cond  |
 			   "(" Cond ")"        | 
 			   COMPSTMT
